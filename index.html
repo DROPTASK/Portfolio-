@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paper Trade - Binance Style</title>
+  <title>Binance Style Paper Trade</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="app">
     <header>
-      <h1>Binance Paper Trade</h1>
-      <div class="theme-toggle" id="themeToggle">🌙</div>
+      <img src="logo.png" alt="Logo" class="logo">
+      <div class="tabs">
+        <button onclick="showTab('market')">Market</button>
+        <button onclick="showTab('gainers')">Gainers</button>
+        <button onclick="showTab('losers')">Losers</button>
+        <button onclick="showTab('portfolio')">Portfolio</button>
+      </div>
+      <div id="themeToggle">🌙</div>
     </header>
 
-    <nav>
-      <button class="tab" onclick="showTab('market')">Market</button>
-      <button class="tab" onclick="showTab('portfolio')">Portfolio</button>
-    </nav>
-
     <main>
-      <section id="market" class="tab-content active">
-        <div id="coinsContainer"></div>
-      </section>
-
+      <section id="market" class="tab-content active"></section>
+      <section id="gainers" class="tab-content"></section>
+      <section id="losers" class="tab-content"></section>
       <section id="portfolio" class="tab-content">
-        <h2>Your Portfolio</h2>
+        <h2>Your Wallet</h2>
         <div id="portfolioContainer"></div>
       </section>
     </main>
@@ -36,8 +36,8 @@
       <span id="closeModal">×</span>
       <h3 id="tradeTitle"></h3>
       <label>Amount (USD): <input type="number" id="tradeAmount" /></label>
-      <label>Leverage (e.g. 1x, 2x, 5x): <input type="number" id="tradeLeverage" value="1" min="1" max="10" /></label>
-      <button id="confirmTrade">Confirm Trade</button>
+      <label>Leverage: <input type="number" id="tradeLeverage" value="1" min="1" max="10" /></label>
+      <button id="confirmTrade">Confirm</button>
     </div>
   </div>
 
