@@ -2,76 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crypto Monitor</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    body {
-      background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .tab-active {
-      background: black;
-      color: white;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paper Trade - Binance Style</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="text-gray-800">
-  <div class="p-4 flex justify-between items-center">
-    <div class="flex items-center gap-4">
-      <img src="logo.png" class="w-10 h-10 rounded-lg" alt="Logo">
-      <h1 class="text-2xl font-bold">Crypto Monitor</h1>
-    </div>
-    <div class="flex gap-4 items-center">
-      <div>Balance: $<span id="balance">0</span></div>
-      <button id="themeToggle">
-        <i id="themeIcon" class="fas fa-moon text-2xl"></i>
-      </button>
-      <button id="addCustomCoin" class="bg-blue-500 text-white px-3 py-1 rounded">+ Coin</button>
-    </div>
+<body>
+  <div class="app">
+    <header>
+      <h1>Binance Paper Trade</h1>
+      <div class="theme-toggle" id="themeToggle">🌙</div>
+    </header>
+
+    <nav>
+      <button class="tab" onclick="showTab('market')">Market</button>
+      <button class="tab" onclick="showTab('portfolio')">Portfolio</button>
+    </nav>
+
+    <main>
+      <section id="market" class="tab-content active">
+        <div id="coinsContainer"></div>
+      </section>
+
+      <section id="portfolio" class="tab-content">
+        <h2>Your Portfolio</h2>
+        <div id="portfolioContainer"></div>
+      </section>
+    </main>
   </div>
 
-  <div class="p-4 flex gap-2 overflow-x-auto">
-    <button class="tab tab-active px-4 py-2 rounded-full bg-white shadow" data-tab="hot">🔥 Hot</button>
-    <button class="tab px-4 py-2 rounded-full bg-white shadow" data-tab="gainers">📈 Gainers</button>
-    <button class="tab px-4 py-2 rounded-full bg-white shadow" data-tab="losers">📉 Losers</button>
-    <button class="tab px-4 py-2 rounded-full bg-white shadow" data-tab="portfolio">👜 Portfolio</button>
-  </div>
-
-  <div id="coin-list" class="p-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"></div>
-
-  <div id="portfolioView" class="hidden p-4">
-    <h2 class="text-xl font-bold mb-4">Your Portfolio</h2>
-    <div id="portfolioCards" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"></div>
-  </div>
-
-  <div id="tradeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-white p-6 rounded-xl w-80 text-center">
-      <h3 id="tradeTitle" class="text-xl font-bold mb-4">Trade</h3>
-      <input id="tradeAmount" type="number" placeholder="Amount (USD)" class="w-full border p-2 rounded mb-4">
-      <div class="flex justify-between">
-        <button id="confirmTrade" class="bg-green-500 text-white px-4 py-2 rounded">Confirm</button>
-        <button id="cancelTrade" class="bg-gray-300 px-4 py-2 rounded">Cancel</button>
-      </div>
+  <div id="tradeModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal">×</span>
+      <h3 id="tradeTitle"></h3>
+      <label>Amount (USD): <input type="number" id="tradeAmount" /></label>
+      <label>Leverage (e.g. 1x, 2x, 5x): <input type="number" id="tradeLeverage" value="1" min="1" max="10" /></label>
+      <button id="confirmTrade">Confirm Trade</button>
     </div>
   </div>
 
-  <div id="customModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-white p-6 rounded-xl w-80 text-center">
-      <h3 class="text-xl font-bold mb-4">Add Custom Coin</h3>
-      <input id="customAddress" type="text" placeholder="Contract Address" class="w-full border p-2 rounded mb-4">
-      <div class="flex justify-between">
-        <button id="confirmCustom" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
-        <button id="cancelCustom" class="bg-gray-300 px-4 py-2 rounded">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="main.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
