@@ -1,46 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Binance Style Paper Trade</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard UI</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="app">
-    <header>
-      <img src="logo.png" alt="Logo" class="logo">
-      <div class="tabs">
-        <button onclick="showTab('market')">Market</button>
-        <button onclick="showTab('gainers')">Gainers</button>
-        <button onclick="showTab('losers')">Losers</button>
-        <button onclick="showTab('portfolio')">Portfolio</button>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        NEERAJ 
+        <button id="closeSidebar">&times;</button>
       </div>
-      <div id="themeToggle">🌙</div>
-    </header>
+      <hr>
+      <nav>
+        <ul>
+          <li onclick="openTab('dashboard')">Dashboard</li>
+          <li onclick="openTab('deposit')">Deposit</li>
+          <li onclick="openTab('withdraw')">withdraw</li>
+          <li onclick="openTab('profile')">Profile</li>
+          <li onclick="openTab('team')">Team</li>
+          <li>Tree view</li>
+          <li>income</li>
+          <li>Support</li>
+      <div class="logout">
+        <button>Logout</button>
+      </div>
+    
+        </ul>
+      </nav>
+    </aside>
 
+    <!-- Main Content -->
     <main>
-      <section id="market" class="tab-content active"></section>
-      <section id="gainers" class="tab-content"></section>
-      <section id="losers" class="tab-content"></section>
-      <section id="portfolio" class="tab-content">
-        <h2>Your Wallet</h2>
-        <div id="portfolioContainer"></div>
-      </section>
-    </main>
+    
+    
+    
+    
+  <header class="main-header">
+  <div class="header-left">
+    <button id="toggleSidebar">☰</button>
   </div>
+  <div class="header-right">
+    <img src="logo.png" alt="Logo" class="header-logo" />
+  </div>
+</header>
+      
+      
+    <main class="main-content">
+  <section id="dashboard" class="tab-section">
+    <div class="dashboard">
 
-  <div id="tradeModal" class="modal">
-    <div class="modal-content">
-      <span id="closeModal">×</span>
-      <h3 id="tradeTitle"></h3>
-      <label>Amount (USD): <input type="number" id="tradeAmount" /></label>
-      <label>Leverage: <input type="number" id="tradeLeverage" value="1" min="1" max="10" /></label>
-      <button id="confirmTrade">Confirm</button>
+      <div class="box profile-box">
+        <h3>Profile</h3>
+        <img src="profile.jpg" alt="Profile Photo" class="profile-pic">
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Account Type:</strong> Premium</p>
+        <p><strong>Total Active Direct:</strong> 12</p>
+        <p><strong>Total Team Business:</strong> $45,000</p>
+      </div>
+
+      <div class="box gain-box">
+        <h3>Total Gain</h3>
+        <p><strong>Current Investment:</strong> $1,000</p>
+        <p><strong>Principal Amount:</strong> $500</p>
+        <p><strong>Profit Sharing:</strong> $200</p>
+        <p><strong>Level Growth Income:</strong> $150</p>
+        <p><strong>Gift Referral Income:</strong> $100</p>
+        <p><strong>SIP:</strong> $75</p>
+        <p><strong>GIP Income:</strong> $50</p>
+        <p><strong>Reward Income:</strong> $30</p>
+        <p><strong>Total Profit:</strong> $1,105</p>
+        <div class="pending-balance">
+          <strong>Pending Wallet:</strong> $200 <button>View Details</button>
+        </div>
+      </div>
+
+      <div class="box balance-box">
+        <h3>Wallet</h3>
+        <p><strong>Top-Up Balance:</strong> $300</p>
+        <p><strong>Withdrawable Balance:</strong> $150</p>
+        <div class="wallet-buttons">
+          <button class="btn-green">Top-Up</button>
+          <button class="btn-blue">Withdraw</button>
+        </div>
+      </div>
+
+      <div class="box referral-box">
+        <h3>Referral System</h3>
+        <p>Share your referral link:</p>
+        <input type="text" value="https://example.com/ref123" id="refLink" readonly>
+        <button onclick="copyReferral()">Copy Link</button>
+      </div>
+
+      <div class="box nav-shortcuts">
+        <h3>Quick Navigation</h3>
+        <div class="nav-links">
+          <button onclick="openTab('deposit')">Deposit</button>
+          <button>Withdrawal</button>
+          <button>Principal Withdrawal</button>
+          <button>Investments</button>
+          <button>Team</button>
+          <button>Income</button>
+          <button>Profile</button>
+          <button>Support</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<section id="deposit" class="tab-section" style="display: none;">
+  <div class="deposit-container">
+    
+    <!-- QR Code Box -->
+    <div class="qr-container">
+      <img src="qr.png" alt="Deposit QR" class="qr-image">
+    </div>
+
+    <!-- Crypto Address Box with Copy Button -->
+    <div class="copyable-address">
+      <input type="text" value="neeraj_wallet_address_123abc" readonly>
+      <button onclick="copyCryptoAddress()">Copy</button>
+    </div>
+
+    <!-- Deposit Form Box -->
+    <div class="deposit-form-box">
+      <div class="deposit-form">
+        <h3>Deposit</h3>
+        <form id="depositForm">
+          <label>Amount</label>
+          <input type="number" required>
+
+          <label>Transaction ID</label>
+          <input type="text" required>
+
+          <label>Upload Proof</label>
+          <input type="file" accept="image/*" required>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function copyCryptoAddress() {
+    var copyText = document.querySelector('.copyable-address input');
+    copyText.select();
+    document.execCommand('copy');
+  }
+</script>
+
+<script>
+  function copyCryptoAddress() {
+    var copyText = document.querySelector('.copyable-address input');
+    copyText.select();
+    document.execCommand('copy');
+  }
+</script>
+    <section id="withdraw" class="tab-section" style="display: none;">
+  <div class="withdraw-container">
+    <h3>Withdraw Funds</h3>
+
+    <div class="wallet-balance">
+      <strong>Wallet Balance:</strong> $150 <!-- Replace with dynamic value if needed -->
+    </div>
+
+    <form id="withdrawForm">
+      <label for="method">Withdraw Method:</label>
+      <select id="method" required>
+        <option value="">Select Method</option>
+        <option value="bank">Bank Card</option>
+        <option value="usdt">USDT</option>
+      </select>
+
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" required min="1" placeholder="Enter amount">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required placeholder="Enter your password">
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</section>
+
+
+
+</main>
+
+  </div> 
+   <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('closed');
+    }
+
+    function openTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-section');
+      tabs.forEach(tab => tab.style.display = 'none');
+
+      const tabToOpen = document.getElementById(tabId);
+      if (tabToOpen) tabToOpen.style.display = 'block';
+    }
+
+    function copyReferral() {
+      const refInput = document.getElementById('refLink');
+      refInput.select();
+      document.execCommand('copy');
+      alert('Referral link copied!');
+    }
+
+    function copyCryptoAddress() {
+      const address = document.getElementById('cryptoAddress').innerText;
+      navigator.clipboard.writeText(address).then(() => {
+        alert('Wallet address copied!');
+      });
+    }
+    
+   
+  function togglePasswordReset() {
+    const form = document.getElementById('resetPasswordForm');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function toggleBankEdit() {
+    const inputs = document.querySelectorAll('#bankForm input');
+    inputs.forEach(input => input.removeAttribute('readonly'));
+  }
+  
+  window.addEventListener('DOMContentLoaded', function () {
+    // Open the default tab
+    openTab('dashboard')  ;    
+   
+  });
+</script>
+
+  
+  </body>
+</html>
+  <script src="script.js"></script>
+</body>
+</html>
+<section id="profile" class="tab-section" style="display: none;">
+  <div class="dashboard">
+
+    <!-- Profile Info Form -->
+    <div class="box profile-form">
+      <h3>User Profile</h3>
+      <form>
+        <label>Sponsor ID</label>
+        <input type="text" value="SP12345" readonly>
+
+        <label>User ID</label>
+        <input type="text" value="USR7890" readonly>
+
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="email" value="john@example.com" readonly>
+
+        <label>Phone</label>
+        <input type="tel" value="+91-9876543210" readonly>
+
+        <label>Wallet</label>
+        <input type="text" placeholder="Enter your wallet address">
+
+        <label>Transaction Password</label>
+        <input type="password" placeholder="********">
+        <button type="button" onclick="togglePasswordReset()">Reset Password</button>
+      </form>
+
+      <!-- Password Reset Form (Hidden Initially) -->
+      <div id="resetPasswordForm" style="display: none; margin-top: 15px;">
+        <h4>Reset Transaction Password</h4>
+        <label>Old Password</label>
+        <input type="password">
+        <label>New Password</label>
+        <input type="password">
+        <label>Confirm New Password</label>
+        <input type="password">
+        <button>Submit</button>
+      </div>
+    </div>
+
+<!-- KYC Section -->
+<div class="box kyc-box">
+  <h3>KYC Verification</h3>
+
+  <div class="kyc-image-wrapper">
+    <div class="kyc-image-box">
+      <img src="profile.png" alt="Profile Image">
     </div>
   </div>
 
-  <script src="app.js"></script>
-</body>
-</html>
+  <form id="kycForm">
+    <label for="aadhar">Upload Aadhaar Card front</label>
+    <input type="file" id="aadharfront">
+
+    <label for="aadhar">Upload Aadhaar Card back</label>
+    <input type="file" id="aadharback">
+    
+    <label for="pan">Upload PAN Card front</label>
+    <input type="file" id="panfront">
+    
+        <label for="pan">Upload PAN Card back</label>
+    <input type="file" id="panback">
+
+    <button type="submit">Submit KYC</button>
+  </form>
+</div>
+
+<!-- Bank Detail Section -->
+<div class="box bank-details">
+  <h3>Bank Details</h3>
+  <form id="bankForm">
+    <label>Account Holder Name</label>
+    <input type="text" class="bank-input" value="John Doe" readonly>
+
+    <label>Bank Name</label>
+    <input type="text" class="bank-input" value="XYZ Bank" readonly>
+
+    <label>Branch Name</label>
+    <input type="text" class="bank-input" value="New Delhi Branch" readonly>
+
+    <label>Account Number</label>
+    <input type="text" class="bank-input" value="123456789012" readonly>
+
+    <label>IFSC Code</label>
+    <input type="text" class="bank-input" value="XYZB0000123" readonly>
+
+    <button type="button" class="bank-btn" onclick="toggleBankEdit()">Change</button>
+  </form>
+</div>
+
+  </div>
+</section>
+
+<!-- Team Section -->
+<section id="team"  class="tab-section" style="display: none;">
+<div id="team" class="box team-details tab-content">
+  <h3>Team</h3>
+
+  <div class="team-block">
+    <h4>Direct Team</h4>
+    <div class="team-row">
+      <span>Active</span>
+      <span>0</span>
+      <button class="team-btn">View</button>
+    </div>
+    <div class="team-row">
+      <span>In-active</span>
+      <span>2</span>
+      <button class="team-btn">View</button>
+    </div>
+  </div>
+
+  <div class="team-block">
+    <h4>Growline Team</h4>
+    <div class="team-row">
+      <span>Active</span>
+      <span>0</span>
+      <button class="team-btn">View</button>
+    </div>
+    <div class="team-row">
+      <span>In-active</span>
+      <span>2</span>
+      <button class="team-btn">View</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
