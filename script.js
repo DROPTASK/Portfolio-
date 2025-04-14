@@ -43,3 +43,19 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
       item.classList.add('clicked');
     });
   });
+<script>
+  function setActive(clickedItem) {
+    // Remove active & clicked from all items
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // Add active class to clicked
+    clickedItem.classList.add('active');
+
+    // Trigger ripple animation cleanly
+    clickedItem.classList.remove('clicked'); // reset if already clicked
+    void clickedItem.offsetWidth; // reflow
+    clickedItem.classList.add('clicked');
+  }
+</script>
