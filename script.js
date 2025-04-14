@@ -20,3 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+document.querySelector('.profile-button').addEventListener('click', () => {
+  document.querySelector('.profile-container').classList.toggle('active');
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  alert('Logging out...');
+});
