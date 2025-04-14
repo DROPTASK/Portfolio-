@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 128, 0, 0.4));
+  background: linear-gradient(145deg, #1b4726, #0d1e15);
   color: #e0ffe0;
   position: relative;
   overflow-x: hidden;
