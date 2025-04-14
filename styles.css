@@ -126,13 +126,13 @@ body {
 }
 
 /* Navigation */
-.sidebar nav ul {
+.sidebar  ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.sidebar nav ul li {
+.sidebar  ul li {
   padding: 14px 18px;
   margin: 8px 0;
   border-radius: 14px;
@@ -144,7 +144,7 @@ body {
   gap: 10px;
 }
 
-.sidebar nav ul li:hover {
+.sidebar  ul li:hover {
   background-color: rgba(170, 255, 170, 0.1);
   padding-left: 24px;
   cursor: pointer;
@@ -152,7 +152,7 @@ body {
 }
 
 /* Optional icon */
-.sidebar nav ul li::before {
+.sidebar  ul li::before {
   content: "➤";
   color: #aaffaa;
   font-size: 12px;
@@ -251,13 +251,13 @@ body {
 }
 
 /* Navigation List */
-.sidebar nav ul {
+.sidebar  ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.sidebar nav ul li {
+.sidebar  ul li {
   padding: 14px 18px;
   margin: 6px 0;
   border-radius: 14px;
@@ -269,7 +269,7 @@ body {
   color: #dfffe0;
 }
 
-.sidebar nav ul li:hover {
+.sidebar  ul li:hover {
   background-color: rgba(170, 255, 170, 0.1);
   padding-left: 24px;
   color: #ffffff;
@@ -278,7 +278,7 @@ body {
 }
 
 /* Icon Bullet */
-.sidebar nav ul li::before {
+.sidebar  ul li::before {
   content: "⟡";
   font-size: 0.8rem;
   color: #aaffaa;
@@ -286,7 +286,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-.sidebar nav ul li:hover::before {
+.sidebar  ul li:hover::before {
   transform: scale(1.3);
 }
 
@@ -312,8 +312,8 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Common nav-item class */
-.nav-item {
+/* Common -item class */
+.-item {
   padding: 14px 18px;
   margin: 6px 0;
   border-radius: 14px;
@@ -327,7 +327,7 @@ body {
 }
 
 /* Hover effect only if not active */
-.nav-item:hover:not(.active) {
+.-item:hover:not(.active) {
   background-color: rgba(170, 255, 170, 0.1);
   padding-left: 24px;
   color: #ffffff;
@@ -336,7 +336,7 @@ body {
 }
 
 /* Active state -- permanent highlight */
-.nav-item.active {
+.-item.active {
   background-color: rgba(170, 255, 170, 0.15);
   padding-left: 24px;
   color: #ffffff;
@@ -344,7 +344,7 @@ body {
 }
 
 /* Click ripple animation */
-.nav-item::after {
+.-item::after {
   content: '';
   position: absolute;
   left: 50%;
@@ -358,7 +358,7 @@ body {
   z-index: 0;
 }
 
-.nav-item.clicked::after {
+.-item.clicked::after {
   width: 200%;
   height: 500%;
   opacity: 0;
@@ -628,13 +628,13 @@ main {
   color: #e0ffe0;
 }
 
-.nav-shortcuts button {
+.-shortcuts button {
   background: rgba(0, 255, 0, 0.05);
   border: 1px solid #555;
   color: #aaffaa;
 }
 
-.nav-shortcuts button {
+.-shortcuts button {
   background: linear-gradient(135deg, rgba(46, 251, 116, 0.08), rgba(0, 0, 0, 0.3));
   border: 1px solid rgba(46, 251, 116, 0.2);
   color: #baffba;
@@ -646,7 +646,7 @@ main {
   backdrop-filter: blur(6px);
 }
 
-.nav-shortcuts button:hover {
+.-shortcuts button:hover {
   background: linear-gradient(135deg, rgba(46, 251, 116, 0.15), rgba(10, 10, 10, 0.6));
   box-shadow: 0 0 8px rgba(46, 251, 116, 0.4);
   transform: scale(1.03);
