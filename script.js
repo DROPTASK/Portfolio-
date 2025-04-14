@@ -27,3 +27,19 @@ document.querySelector('.profile-button').addEventListener('click', () => {
 document.getElementById('logoutBtn').addEventListener('click', () => {
   alert('Logging out...');
 });
+
+  const navItems = document.querySelectorAll('.nav-item');
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Remove active class from all
+      navItems.forEach(i => i.classList.remove('active'));
+      // Add active to clicked one
+      item.classList.add('active');
+
+      // Trigger click animation
+      item.classList.remove('clicked');
+      void item.offsetWidth; // Force reflow to restart animation
+      item.classList.add('clicked');
+    });
+  });
